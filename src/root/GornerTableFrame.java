@@ -106,6 +106,12 @@ public class GornerTableFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String value = JOptionPane.showInputDialog(GornerTableFrame.this, "Введите значение", "Поиск", JOptionPane.QUESTION_MESSAGE);
+                try {
+                    Double test = Double.parseDouble(value);
+                } catch (NumberFormatException exception) {
+                    JOptionPane.showMessageDialog(GornerTableFrame.this, "Неверные данные", "Ошибка", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 renderer.setRequiredValue(value);
                 repaint();
             }
@@ -116,6 +122,7 @@ public class GornerTableFrame extends JFrame {
         Action searchValueFromRangeAction = new AbstractAction("Найти значение из диапазона") {
             @Override
             public void actionPerformed(ActionEvent e) {
+                renderer.setRequiredValue(null);
                 String rangeBegStr = JOptionPane.showInputDialog(GornerTableFrame.this, "Введите начало отрезка", "Поиск", JOptionPane.QUESTION_MESSAGE);
                 String rangeEndStr = JOptionPane.showInputDialog(GornerTableFrame.this, "Введите конец отрезка", "Поиск", JOptionPane.QUESTION_MESSAGE);
                 double rangeBeg;
