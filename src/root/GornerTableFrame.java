@@ -184,7 +184,9 @@ public class GornerTableFrame extends JFrame {
     }
 
     private void constructMid() {
-        //TODO
+        hResultTableBox = Box.createHorizontalBox();
+        hResultTableBox.add(new JPanel());
+        add(hResultTableBox, BorderLayout.CENTER);
     }
 
     private void constructBot() {
