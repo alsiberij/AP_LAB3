@@ -40,7 +40,7 @@ public class GornerTableCellRenderer implements TableCellRenderer {
             label.setForeground(Color.WHITE);
         } else {
             panel.setBackground(Color.WHITE);
-            label.setBackground(Color.BLACK);
+            label.setForeground(Color.BLACK);
         }
 
         if (column == 1 && ((requiredValue != null && requiredValue.equals(formattedValue)) || (rangeBeg != null && rangeEnd != null && (Double) value >= rangeBeg && (Double) value <= rangeEnd))) {
