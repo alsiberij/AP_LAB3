@@ -245,6 +245,9 @@ public class GornerTableFrame extends JFrame {
                 saveToCsvMI.setEnabled(false);
                 searchValueMI.setEnabled(false);
                 searchValueFromRangeMI.setEnabled(false);
+                renderer.setRequiredValue(null);
+                renderer.setRangeBeg(null);
+                renderer.setRangeEnd(null);
                 validate();
             }
         });
