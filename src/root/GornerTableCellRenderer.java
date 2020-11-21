@@ -45,6 +45,7 @@ public class GornerTableCellRenderer implements TableCellRenderer {
 
         if (column == 1 && ((requiredValue != null && requiredValue.equals(formattedValue)) || (rangeBeg != null && rangeEnd != null && (Double) value >= rangeBeg && (Double) value <= rangeEnd))) {
             panel.setBackground(Color.getHSBColor(121, 54, 100));
+            label.setForeground(Color.BLACK);
         }
 
         return panel;
