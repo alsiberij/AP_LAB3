@@ -3,6 +3,7 @@ package root;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 public class GornerTableFrame extends JFrame {
@@ -190,6 +191,76 @@ public class GornerTableFrame extends JFrame {
     }
 
     private void constructBot() {
-        //TODO
+        JButton buttonCalc = new JButton("Вычислить");
+        buttonCalc.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double xBeg = Double.parseDouble(xBegTF.getText());
+                    double xEnd = Double.parseDouble(xEndTF.getText());
+                    double step = Double.parseDouble(stepTF.getText());
+
+                    if (xBeg > xEnd) {
+                        double tmp = xBeg;
+                        xBeg = xEnd;
+                        xEnd = tmp;
+                        xBegTF.setText(String.valueOf(xBeg));
+                        xEndTF.setText(String.valueOf(xEnd));
+                    }
+
+                    if (step <= 0) {
+                        throw new NumberFormatException();
+                    }
+
+                    dataTable = new GornerTableModel(xBeg, xEnd, step, coefficients);
+                    JTable table = new JTable(dataTable);
+                    table.setDefaultRenderer(Double.class, renderer);
+                    table.setRowHeight(30);
+                    hResultTableBox.removeAll();
+                    hResultTableBox.add(new JScrollPane(table));
+                    validate();
+
+                    saveToTxtMI.setEnabled(true);
+                    saveToBinMI.setEnabled(true);
+                    saveToCsvMI.setEnabled(true);
+                    searchValueMI.setEnabled(true);
+                    searchValueFromRangeMI.setEnabled(true);
+                } catch (NumberFormatException exception) {
+                    JOptionPane.showMessageDialog(GornerTableFrame.this, "Неверные данные", "Ошибка", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        JButton resetButton = new JButton("Очистить");
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                xBegTF.setText("0.0");
+                xEndTF.setText("1.0");
+                stepTF.setText("0.1");
+                hResultTableBox.removeAll();
+                hResultTableBox.add(new JPanel());
+                saveToTxtMI.setEnabled(false);
+                saveToBinMI.setEnabled(false);
+                saveToCsvMI.setEnabled(false);
+                searchValueMI.setEnabled(false);
+                searchValueFromRangeMI.setEnabled(false);
+                validate();
+            }
+        });
+
+        Box hBoxButtons = Box.createHorizontalBox();
+        //hBoxButtons.setBorder(BorderFactory.createBevelBorder(1));
+        hBoxButtons.add(Box.createHorizontalGlue());
+        hBoxButtons.add(buttonCalc);
+        hBoxButtons.add(Box.createHorizontalStrut(30));
+        hBoxButtons.add(resetButton);
+        hBoxButtons.add(Box.createHorizontalGlue());
+        hBoxButtons.setPreferredSize(new Dimension(
+                (int) hBoxButtons.getMaximumSize().getWidth(),
+                (int) hBoxButtons.getMinimumSize().getHeight() * 2
+        ));
+
+        add(hBoxButtons, BorderLayout.SOUTH);
     }
 }
