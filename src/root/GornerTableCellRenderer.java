@@ -32,6 +32,7 @@ public class GornerTableCellRenderer implements TableCellRenderer {
         String formattedValue = formatter.format(value);
 
         label.setText(formattedValue);
+        panel.add(label);
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         if ((row + column) % 2 != 0) {
