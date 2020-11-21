@@ -148,7 +148,39 @@ public class GornerTableFrame extends JFrame {
     }
 
     private void constructTop() {
-        //TODO
+        JLabel xBegLabel = new JLabel("X от: ");
+        xBegTF = new JTextField("0.0", 15);
+        xBegTF.setMaximumSize(xBegTF.getPreferredSize());
+
+        JLabel xEndLabel = new JLabel("до: ");
+        xEndTF = new JTextField("1.0", 15);
+        xEndTF.setMaximumSize(xEndTF.getPreferredSize());
+
+        JLabel stepLabel = new JLabel("с шагом: ");
+        stepTF = new JTextField("0.1", 15);
+        stepTF.setMaximumSize(stepTF.getPreferredSize());
+
+        Box hBoxTextFields = Box.createHorizontalBox();
+        //hBoxTextFields.setBorder(BorderFactory.createBevelBorder(1));
+        hBoxTextFields.add(Box.createHorizontalGlue());
+        hBoxTextFields.add(xBegLabel);
+        hBoxTextFields.add(Box.createHorizontalStrut(10));
+        hBoxTextFields.add(xBegTF);
+        hBoxTextFields.add(Box.createHorizontalStrut(30));
+        hBoxTextFields.add(xEndLabel);
+        hBoxTextFields.add(Box.createHorizontalStrut(10));
+        hBoxTextFields.add(xEndTF);
+        hBoxTextFields.add(Box.createHorizontalStrut(30));
+        hBoxTextFields.add(stepLabel);
+        hBoxTextFields.add(Box.createHorizontalStrut(10));
+        hBoxTextFields.add(stepTF);
+        hBoxTextFields.add(Box.createHorizontalGlue());
+
+        hBoxTextFields.setPreferredSize(new Dimension(
+                (int) hBoxTextFields.getMaximumSize().getWidth(),
+                (int) hBoxTextFields.getMinimumSize().getHeight() * 2));
+
+        add(hBoxTextFields, BorderLayout.NORTH);
     }
 
     private void constructMid() {
