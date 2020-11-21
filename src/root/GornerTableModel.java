@@ -16,5 +16,16 @@ public class GornerTableModel extends AbstractTableModel {
         this.coefficients = coefficients;
     }
 
+    public double getXBeg() {
+        return xBeg;
+    }
+
+    public double getXEnd() {
+        return xEnd;
+    }
+
+    public double getStep() {
+        return step;
+    }
     
 }
