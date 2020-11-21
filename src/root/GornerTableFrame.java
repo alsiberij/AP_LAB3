@@ -1,6 +1,7 @@
 package root;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GornerTableFrame extends JFrame {
 
@@ -28,5 +29,33 @@ public class GornerTableFrame extends JFrame {
 
     private GornerTableModel dataTable;
 
-    
+    GornerTableFrame(double[] coefficients) {
+        super("ТАБУЛИРОВАНИЕ ПО СХЕМЕ ГОРНЕРА");
+        this.coefficients = coefficients;
+        setSize(WIDTH, HEIGHT);
+
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        setLocation((tk.getScreenSize().width - WIDTH) / 2, (tk.getScreenSize().height - HEIGHT) / 2);
+
+        constructMenu();
+        constructTop();
+        constructMid();
+        constructBot();
+    }
+
+    private void constructMenu() {
+        //TODO
+    }
+
+    private void constructTop() {
+        //TODO
+    }
+
+    private void constructMid() {
+        //TODO
+    }
+
+    private void constructBot() {
+        //TODO
+    }
 }
