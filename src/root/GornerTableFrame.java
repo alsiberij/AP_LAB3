@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.*;
 
 public class GornerTableFrame extends JFrame {
 
@@ -65,7 +65,7 @@ public class GornerTableFrame extends JFrame {
                     fileChooser.setCurrentDirectory(new File("."));
                 }
                 if (fileChooser.showSaveDialog(GornerTableFrame.this) == JFileChooser.APPROVE_OPTION) {
-                    //SaveToTxt(fileChooser.getSelectedFile())
+                    saveToTxt(new File(fileChooser.getSelectedFile().getName().concat(".txt")));
                 }
             }
         };
@@ -80,7 +80,7 @@ public class GornerTableFrame extends JFrame {
                     fileChooser.setCurrentDirectory(new File("."));
                 }
                 if (fileChooser.showSaveDialog(GornerTableFrame.this) == JFileChooser.APPROVE_OPTION) {
-                    //SaveToBin(fileChooser.getSelectedFile())
+                    saveToBin(new File(fileChooser.getSelectedFile().getName().concat(".txt")));
                 }
             }
         };
@@ -95,7 +95,7 @@ public class GornerTableFrame extends JFrame {
                     fileChooser.setCurrentDirectory(new File("."));
                 }
                 if (fileChooser.showSaveDialog(GornerTableFrame.this) == JFileChooser.APPROVE_OPTION) {
-                    //SaveToCsv(fileChooser.getSelectedFile())
+                    saveToCsv(new File(fileChooser.getSelectedFile().getName().concat(".txt")));
                 }
             }
         };
@@ -118,8 +118,8 @@ public class GornerTableFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String rangeBegStr = JOptionPane.showInputDialog(GornerTableFrame.this, "Введите начало отрезка", "Поиск", JOptionPane.QUESTION_MESSAGE);
                 String rangeEndStr = JOptionPane.showInputDialog(GornerTableFrame.this, "Введите конец отрезка", "Поиск", JOptionPane.QUESTION_MESSAGE);
-                Double rangeBeg = null;
-                Double rangeEnd = null;
+                double rangeBeg;
+                double rangeEnd;
                 try {
                     rangeBeg = Double.parseDouble(rangeBegStr);
                     rangeEnd = Double.parseDouble(rangeEndStr);
@@ -127,8 +127,8 @@ public class GornerTableFrame extends JFrame {
                     JOptionPane.showMessageDialog(GornerTableFrame.this, "Неверные данные");
                     return;
                 }
-                renderer.setRangeBeg(rangeBeg < rangeEnd ? rangeBeg : rangeEnd);
-                renderer.setRangeEnd(rangeBeg < rangeEnd ? rangeEnd : rangeBeg);
+                renderer.setRangeBeg(Math.min(rangeBeg, rangeEnd));
+                renderer.setRangeEnd(Math.max(rangeBeg, rangeEnd));
 
                 repaint();
             }
@@ -265,5 +265,17 @@ public class GornerTableFrame extends JFrame {
         ));
 
         add(hBoxButtons, BorderLayout.SOUTH);
+    }
+
+    void saveToTxt(File file) {
+
+    }
+
+    void saveToBin(File file) {
+
+    }
+
+    void saveToCsv(File file) {
+
     }
 }
