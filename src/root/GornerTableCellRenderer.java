@@ -62,4 +62,8 @@ public class GornerTableCellRenderer implements TableCellRenderer {
     public void setRangeEnd(Double rangeEnd) {
         this.rangeEnd = rangeEnd;
     }
+
+    public DecimalFormat getFormatter() {
+        return formatter;
+    }
 }
