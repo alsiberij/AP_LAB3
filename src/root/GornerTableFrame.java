@@ -80,7 +80,7 @@ public class GornerTableFrame extends JFrame {
                     fileChooser.setCurrentDirectory(new File("."));
                 }
                 if (fileChooser.showSaveDialog(GornerTableFrame.this) == JFileChooser.APPROVE_OPTION) {
-                    saveToBin(new File(fileChooser.getSelectedFile().getName().concat(".txt")));
+                    saveToBin(new File(fileChooser.getSelectedFile().getName().concat(".bin")));
                 }
             }
         };
@@ -95,7 +95,7 @@ public class GornerTableFrame extends JFrame {
                     fileChooser.setCurrentDirectory(new File("."));
                 }
                 if (fileChooser.showSaveDialog(GornerTableFrame.this) == JFileChooser.APPROVE_OPTION) {
-                    saveToCsv(new File(fileChooser.getSelectedFile().getName().concat(".txt")));
+                    saveToCsv(new File(fileChooser.getSelectedFile().getName().concat(".csv")));
                 }
             }
         };
@@ -303,8 +303,6 @@ public class GornerTableFrame extends JFrame {
             for (int i = 0; i < dataTable.getRowCount(); i++) {
                 out.writeDouble((Double) dataTable.getValueAt(i, 0));
                 out.writeDouble((Double) dataTable.getValueAt(i, 1));
-                out.writeDouble((Double) dataTable.getValueAt(i, 2));
-                out.writeDouble((Double) dataTable.getValueAt(i, 3));
             }
             out.close();
         } catch (Exception ignore) {
