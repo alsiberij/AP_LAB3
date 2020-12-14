@@ -36,15 +36,15 @@ public class GornerTableCellRenderer implements TableCellRenderer {
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         if ((row + column) % 2 != 0) {
-            panel.setBackground(Color.BLACK);
-            label.setForeground(Color.WHITE);
-        } else {
             panel.setBackground(Color.WHITE);
             label.setForeground(Color.BLACK);
+        } else {
+            panel.setBackground(Color.BLACK);
+            label.setForeground(Color.WHITE);
         }
 
         if (column == 1 && ((requiredValue != null && requiredValue.equals(formattedValue)) || (rangeBeg != null && rangeEnd != null && (Double) value >= rangeBeg && (Double) value <= rangeEnd))) {
-            panel.setBackground(Color.getHSBColor(121, 54, 100));
+            panel.setBackground(Color.RED);
             label.setForeground(Color.BLACK);
         }
 
